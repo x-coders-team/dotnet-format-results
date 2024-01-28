@@ -12,7 +12,7 @@ inputs:
     default: '[]'
 outputs:
   html-output:
-    description: Result
+    description: Generated HTML code based on JSON input for the results.
 
 runs:
   using: 'docker'
