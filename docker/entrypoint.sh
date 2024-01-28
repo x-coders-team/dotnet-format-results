@@ -1,5 +1,10 @@
 #!/bin/sh -l
 
 echo "JSON Input $1"
-html_output="<html><head><title>Testing</title></head><body><p>Testing workflow</p></body></html>"
-echo "html-output=$html_output" >> $GITHUB_OUTPUT
+if html_output=$(python ./src/main.py); then
+    echo "html-output=$html_output" >> $GITHUB_OUTPUT
+else
+    echo "Unable return HTML output"
+    exit 1
+fi
+
