@@ -11,7 +11,7 @@ inputs:
     required: true
     default: '[]'
 outputs:
-  result:
+  html-output:
     description: Result
 
 runs:
