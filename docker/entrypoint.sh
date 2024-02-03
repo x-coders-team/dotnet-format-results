@@ -3,8 +3,11 @@
 echo "JSON Input $1"
 echo "Runner work directory $2"
 
-ls -l $GITHUB_WORKSPACE
-ls -l /action
+if pip install githubkit; then
+    echo "[OK] pip install githubkit"
+else 
+    echo "[KO] pip install githubkit"
+fi
 
 if html_output=$(python /action/src/main.py "$1" "$2"); then
     echo "html-output=$html_output" >> $GITHUB_OUTPUT
