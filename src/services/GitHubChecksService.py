@@ -33,8 +33,6 @@ class GitHubChecksService(ServiceAbstract):
             conclusion = 'skipped'
         )
 
-        pprint(resp)
-
         pass
 
     def _getRepositoryName(self, ownerAndRepositorySetting):
