@@ -3,9 +3,6 @@
 echo "JSON Input $1"
 echo "Runner work directory $2"
 
-echo "head_ref: $3"
-echo "sha: $4"
-
 echo  "GITHUB_SHA: ${GITHUB_SHA} \n"
 echo  "GITHUB_REPOSITORY_OWNER: ${GITHUB_REPOSITORY_OWNER} \n"
 echo  "GITHUB_REPOSITORY: ${GITHUB_REPOSITORY} \n"
@@ -27,7 +24,7 @@ else
     echo "[KO] pip install githubkit"
 fi
 
-gitHubConfig="{\"SHA\": \"${GITHUB_SHA}\", \"REPOSITORY_OWNER\": \"${GITHUB_REPOSITORY_OWNER}\", \"REPOSITORY\": \"${GITHUB_REPOSITORY}\"}"
+gitHubConfig="{\"SHA\": \"${GITHUB_WORKFLOW_SHA}\", \"REPOSITORY_OWNER\": \"${GITHUB_REPOSITORY_OWNER}\", \"REPOSITORY\": \"${GITHUB_REPOSITORY}\"}"
 
 # debug_output=$(python /action/src/main.py "$1" "$2" "${gitHubConfig}" "1")
 # echo "Run With Debug:"
