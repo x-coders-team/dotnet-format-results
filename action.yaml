@@ -25,3 +25,5 @@ runs:
   args:
     - ${{ inputs.json-results }}
     - ${{ inputs.runner-workdir }}
+    - ${{ github.head_ref }}
+    - ${{ github.sha }}
