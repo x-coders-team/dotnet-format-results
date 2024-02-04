@@ -37,12 +37,12 @@ class GitHubChecksService(ServiceAbstract):
 
         pass
 
-    def _getRepositoryName(ownerAndRepositorySetting):
+    def _getRepositoryName(self, ownerAndRepositorySetting):
         splitData = ownerAndRepositorySetting.split('/')
 
         return {
             "owner": splitData[0], 
-            "repository": splitData[0], 
+            "repository": splitData[1], 
             "full": ownerAndRepositorySetting
         }
     
