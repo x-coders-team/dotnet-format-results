@@ -9,6 +9,8 @@ else
     echo "[KO] pip install githubkit"
 fi
 
+echo -e "${GITHUB_SHA} \n"
+
 if html_output=$(python /action/src/main.py "$1" "$2"); then
     echo "html-output=$html_output" >> $GITHUB_OUTPUT
 else

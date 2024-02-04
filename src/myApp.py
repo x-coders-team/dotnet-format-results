@@ -15,6 +15,7 @@ class MyApp(Application):
         di.registryService('ExampleService')
         di.registryService('FileJsonEncoderService')
         di.registryService('MapperDotnetFormatService')
+        di.registryService('GitHubChecksService')
 
         app = MyApp('dotnet-format-results', argumentsCollection, di)
         

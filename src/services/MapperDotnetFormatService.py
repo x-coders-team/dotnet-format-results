@@ -5,13 +5,13 @@ from inspect import getmembers
 
 class MapperDotnetFormatService(ServiceAbstract):
     def __init__(self, di = None):
-        """The <see cref="MapperDotnetFormatService"/> class is responsible for mapping raw data transformed from a JSON string 
+        """The MapperDotnetFormatService class is responsible for mapping raw data transformed from a JSON string 
            into a list of objects in the MapperDotnetFormatService format. This service encapsulates the logic for transforming
            JSON data into a specific format defined by the MapperDotnetFormatService, providing a convenient and reusable way
            to process and work with data in a standardized manner.
 
         Args:
-            di (_type_, optional): _description_. Defaults to None.
+            di (DepedencyInjection, optional): _description_. Defaults to None.
         """
 
         super().__init__(di)
