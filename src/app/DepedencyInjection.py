@@ -6,7 +6,7 @@ class DepedencyInjection():
         self._di_services = containers
         pass
 
-    def registryService(self, serviceName):
+    def registryService(self, serviceName, app):
         if (len(self._di_services) == 0):
             self._di_services.append(dict())
 
@@ -15,7 +15,7 @@ class DepedencyInjection():
         
         module = __import__(self._service_module)
         serviceClass = getattr(module, serviceName)
-        self._di_services[0][serviceName] = serviceClass(self)
+        self._di_services[0][serviceName] = serviceClass(self, app)
         pass
 
     def isServiceExists(self, serviceName):
@@ -25,6 +25,6 @@ class DepedencyInjection():
             
         return False
 
-    def getService(self, serviceName):
-        self.registryService(serviceName)
+    def getService(self, serviceName, app):
+        self.registryService(serviceName, app)
         return self._di_services[0][serviceName]

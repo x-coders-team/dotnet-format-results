@@ -9,4 +9,7 @@ class Action():
         pass
 
     def injectService(self, serviceName):
-        return self._app._di.getService(serviceName)
+        return self._app._di.getService(serviceName, self._app)
+    
+    def injectConfigByName(self, configName):
+        return self._app.getArgumentByName(configName)

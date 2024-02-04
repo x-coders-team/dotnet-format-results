@@ -15,9 +15,9 @@ echo  "GITHUB_REPOSITORY: ${GITHUB_REPOSITORY} \n"
 echo  "GITHUB_HEAD_REF: ${GITHUB_HEAD_REF} \n"
 echo  "GITHUB_ACTION_REF: ${GITHUB_ACTION_REF} \n"
 
+gitHubConfig="{\"SHA\": \"${GITHUB_SHA}\", \"REPOSITORY_OWNER\": \"${GITHUB_REPOSITORY_OWNER}\", \"REPOSITORY\": \"${GITHUB_REPOSITORY}\"}"
 
-
-if html_output=$(python /action/src/main.py "$1" "$2"); then
+if html_output=$(python /action/src/main.py "$1" "$2" "${gitHubConfig}"); then
     echo "html-output=$html_output" >> $GITHUB_OUTPUT
 else
     echo "Unable return HTML output"

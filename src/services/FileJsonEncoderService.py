@@ -7,8 +7,8 @@ from inspect import getmembers
 class FileJsonEncoderService(ServiceAbstract):
     mapperService = None
 
-    def __init__(self, di = None):
-        super().__init__(di)
+    def __init__(self, di = None, app = None):
+        super().__init__(di, app)
         self.mapperService = self.injectService('MapperDotnetFormatService')
 
     def loadDocumentCollestionFromText(self, documentCollestionText):

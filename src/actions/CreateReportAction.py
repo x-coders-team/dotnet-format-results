@@ -16,6 +16,8 @@ class CreateReportAction(Action):
     def exec(self):
         json_input = self._app.getArgumentByName('json_input')
         documentsCollection = self.fileJsonEncoderService.loadDocumentCollestionFromText(json_input)
+        self.gitHubChecksService.CreateNewCheck()
+
         #pprint(documentsCollection)
         
         htmlOutput = self.exampleService.createSampleText(json_input)
