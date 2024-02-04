@@ -25,9 +25,9 @@ echo  "GITHUB_REF_TYPE: ${GITHUB_REF_TYPE} \n"
 
 gitHubConfig="{\"SHA\": \"${GITHUB_SHA}\", \"REPOSITORY_OWNER\": \"${GITHUB_REPOSITORY_OWNER}\", \"REPOSITORY\": \"${GITHUB_REPOSITORY}\"}"
 
-debug_output=$(python /action/src/main.py "$1" "$2" "${gitHubConfig}" "1")
-echo "Run With Debug:"
-echo "$debug_output"
+# debug_output=$(python /action/src/main.py "$1" "$2" "${gitHubConfig}" "1")
+# echo "Run With Debug:"
+# echo "$debug_output"
 
 if html_output=$(python /action/src/main.py "$1" "$2" "${gitHubConfig}" "0"); then
     echo "Prepare output"
