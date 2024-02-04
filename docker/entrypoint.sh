@@ -24,10 +24,11 @@ echo  "GITHUB_ACTION: ${GITHUB_ACTION} \n"
 gitHubConfig="{\"SHA\": \"${GITHUB_SHA}\", \"REPOSITORY_OWNER\": \"${GITHUB_REPOSITORY_OWNER}\", \"REPOSITORY\": \"${GITHUB_REPOSITORY}\"}"
 
 debug_output=$(python /action/src/main.py "$1" "$2" "${gitHubConfig}" "1")
-
-
+echo "Run With Debug:"
+echo "$debug_output"
 
 if html_output=$(python /action/src/main.py "$1" "$2" "${gitHubConfig}" "0"); then
+    echo "Prepare output"
     echo "html-output=$html_output" >> $GITHUB_OUTPUT
 else
     echo "Unable return HTML output"
