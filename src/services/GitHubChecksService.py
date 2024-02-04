@@ -30,7 +30,7 @@ class GitHubChecksService(ServiceAbstract):
             name = self._checkName,
             external_id = self._externalId,
             status = 'completed',
-            conclusion = 'success'
+            conclusion = 'success',
             output = {
                 "title": self._checkName,
                 "summary": "summary OK",
