@@ -36,8 +36,20 @@ class MyApp(Application):
             collection = argumentsCollection
         )
 
+        argumentsCollection = MyApp.createArgumentsCollection(
+            arg = MyApp.createArgument('debug', MyApp.getBooleanValueArgument(argv[4])),
+            collection = argumentsCollection
+        )
+
         return argumentsCollection
     
     @staticmethod
     def readJsonConfig(rawText):
         return json.loads(rawText)
+    
+    @staticmethod
+    def getBooleanValueArgument(value):
+        if value == '0':
+            return False
+        else:
+            return True

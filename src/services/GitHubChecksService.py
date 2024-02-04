@@ -8,6 +8,7 @@ class GitHubChecksService(ServiceAbstract):
     _gitHubConfig = None
     _checkName = ".NET Format Results [beta]"
     _externalId = "action-dotnet-format-results"
+    _debug = False
 
     def __init__(self, di = None, app = None):
         """_summary_
@@ -19,6 +20,7 @@ class GitHubChecksService(ServiceAbstract):
         super().__init__(di, app)
         self._github = GitHub(ActionAuthStrategy())
         self._gitHubConfig = self.injectConfigByName('github_config')
+        self._debug = self.injectConfigByName('debug')
 
     async def createNewCheck(self):
         repositoryMetadata = self._getRepositoryName(self._gitHubConfig['REPOSITORY'])
@@ -28,7 +30,6 @@ class GitHubChecksService(ServiceAbstract):
             owner = repositoryMetadata['owner'],
             repo = repositoryMetadata['repository'],
             name = self._checkName,
-            external_id = self._externalId,
             status = 'completed',
             conclusion = 'success',
             output = {
@@ -37,6 +38,9 @@ class GitHubChecksService(ServiceAbstract):
                 "text": "text OK"
             }
         )
+
+        if self._debug:
+            pprint(resp)
 
         pass
 
