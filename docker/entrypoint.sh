@@ -15,4 +15,3 @@ else
     echo "Unable return HTML output"
     exit 1
 fi
-

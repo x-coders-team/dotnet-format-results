@@ -1,17 +1,23 @@
 
 from app import Application
+from app import DepedencyInjection
 
 class MyApp(Application):
     def __init__(self,appName = '', args=[], services={}):
         super().__init__(appName, args, services)
     
     @staticmethod
-    def startUp(argv, entrypointAction = 'index'):
-        argumentsCollection = MyApp.prepareArgumentsCollection(argv)        
-        app = MyApp('dotnet-format-results', argumentsCollection)
+    def startUp(argv, containers, entrypointAction = 'index'):
 
-        app.registryService('ExampleService')
+        argumentsCollection = MyApp.prepareArgumentsCollection(argv)
 
+        di = DepedencyInjection(containers);
+        di.registryService('ExampleService')
+        di.registryService('FileJsonEncoderService')
+        di.registryService('MapperDotnetFormatService')
+
+        app = MyApp('dotnet-format-results', argumentsCollection, di)
+        
         app.runAction(entrypointAction)
         pass 
     

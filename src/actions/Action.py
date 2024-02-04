@@ -7,3 +7,6 @@ class Action():
 
     def exec(self):
         pass
+
+    def injectService(self, serviceName):
+        return self._app._di.getService(serviceName)

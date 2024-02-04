@@ -1,8 +1,9 @@
 class ServiceAbstract():
-    _di = {}
-    _app = None
+    _di = None
 
-    def __init__(self, di = {}, app = None):
+    def __init__(self, di = None):
         self._di = di
-        self._app = app
         pass
+
+    def injectService(self, serviceName):
+        return self._di.getService(serviceName)
