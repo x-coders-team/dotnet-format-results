@@ -28,12 +28,7 @@ class GitHubChecksService(ServiceAbstract):
             name = self._checkName,
             external_id = self._externalId,
             status = 'completed',
-            conclusion = 'skipped',
-            output = {
-                "title": ".NET Format Results [beta]",
-                "summary": "",
-                "text": "",
-            }
+            conclusion = 'skipped'
         )
 
         pprint(resp)
