@@ -20,11 +20,13 @@ class GitHubChecksService(ServiceAbstract):
         self._github = GitHub(ActionAuthStrategy())
         self._gitHubConfig = self.injectConfigByName('github_config')
 
-    async def CreateNewCheck(self):
+    async def createNewCheck(self):
+        repositoryMetadata = self._getRepositoryName(self._gitHubConfig['REPOSITORY'])
+
         resp = await self._github.rest.checks.async_create(
             head_sha = self._gitHubConfig['SHA'],
-            owner = self._gitHubConfig['REPOSITORY_OWNER'],
-            repo = self._gitHubConfig['REPOSITORY'],
+            owner = repositoryMetadata['owner'],
+            repo = repositoryMetadata['repository'],
             name = self._checkName,
             external_id = self._externalId,
             status = 'completed',
@@ -34,4 +36,13 @@ class GitHubChecksService(ServiceAbstract):
         pprint(resp)
 
         pass
+
+    def _getRepositoryName(ownerAndRepositorySetting):
+        splitData = ownerAndRepositorySetting.split('/')
+
+        return {
+            "owner": splitData[0], 
+            "repository": splitData[0], 
+            "full": ownerAndRepositorySetting
+        }
     

@@ -16,7 +16,7 @@ class CreateReportAction(Action):
     async def exec(self):
         json_input = self._app.getArgumentByName('json_input')
         documentsCollection = self.fileJsonEncoderService.loadDocumentCollestionFromText(json_input)
-        await self.gitHubChecksService.CreateNewCheck()
+        await self.gitHubChecksService.createNewCheck()
 
         #pprint(documentsCollection)
         
