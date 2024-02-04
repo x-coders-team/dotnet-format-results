@@ -20,8 +20,8 @@ class GitHubChecksService(ServiceAbstract):
         self._github = GitHub(ActionAuthStrategy())
         self._gitHubConfig = self.injectConfigByName('github_config')
 
-    def CreateNewCheck(self):
-        resp = self._github.rest.checks.async_create(
+    async def CreateNewCheck(self):
+        resp = await self._github.rest.checks.async_create(
             head_sha = self._gitHubConfig['SHA'],
             owner = self._gitHubConfig['REPOSITORY_OWNER'],
             repo = self._gitHubConfig['REPOSITORY'],

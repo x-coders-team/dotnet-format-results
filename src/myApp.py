@@ -8,14 +8,14 @@ class MyApp(Application):
         super().__init__(appName, args, services)
     
     @staticmethod
-    def startUp(argv, containers, entrypointAction = 'index'):
+    async def startUp(argv, containers, entrypointAction = 'index'):
 
         argumentsCollection = MyApp.prepareArgumentsCollection(argv)
         
         di = DepedencyInjection(containers);
 
         app = MyApp('dotnet-format-results', argumentsCollection, di)
-        app.runAction(entrypointAction)
+        await app.runAction(entrypointAction)
         pass 
     
     @staticmethod
