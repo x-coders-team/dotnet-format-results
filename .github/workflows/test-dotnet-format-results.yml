@@ -9,6 +9,8 @@ jobs:
               uses: actions/checkout@v4
             - name: "Uses"
               id: output-convert
+              env: 
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               uses: ./
               with:
                 json-results: '[{"DocumentId":{"ProjectId":{"Id":"f307936d-8b40-4e7c-897c-0f16889c4163"},"Id":"70e32bdf-23e9-4482-a949-65384ce65fce"},"FileName":"WeatherForecastRepository.cs","FilePath":"F:\\Projekty\\crontab-registry\\src\\CrontabRegistry\\Infrastructure\\Repositories\\WeatherForecastRepository.cs","FileChanges":[{"LineNumber":13,"CharNumber":28,"DiagnosticId":"WHITESPACE","FormatDescription":"Napraw formatowanie odstępów. Replace 1 characters with ''\\r\\n\\s\\s\\s\\s\\s\\s\\s\\s''."}]}]'
